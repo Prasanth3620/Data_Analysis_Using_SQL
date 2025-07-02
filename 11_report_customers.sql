@@ -1,7 +1,5 @@
 /*
-===============================================================================
 Customer Report
-===============================================================================
 Purpose:
     - This report consolidates key customer metrics and behaviors
 
@@ -18,12 +16,9 @@ Highlights:
 	    - recency (months since last order)
 		- average order value
 		- average monthly spend
-===============================================================================
 */
 
--- =============================================================================
 -- Create Report: gold.report_customers
--- =============================================================================
 IF OBJECT_ID('gold.report_customers', 'V') IS NOT NULL
     DROP VIEW gold.report_customers;
 GO
@@ -31,9 +26,9 @@ GO
 CREATE VIEW gold.report_customers AS
 
 WITH base_query AS(
-/*---------------------------------------------------------------------------
+/*
 1) Base Query: Retrieves core columns from tables
----------------------------------------------------------------------------*/
+*/
 SELECT
 f.order_number,
 f.product_key,
@@ -44,15 +39,15 @@ c.customer_key,
 c.customer_number,
 CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
 DATEDIFF(year, c.birthdate, GETDATE()) age
-FROM gold.fact_sales f
-LEFT JOIN gold.dim_customers c
+FROM sales f
+LEFT JOIN customers c
 ON c.customer_key = f.customer_key
 WHERE order_date IS NOT NULL)
 
 , customer_aggregation AS (
-/*---------------------------------------------------------------------------
+/*
 2) Customer Aggregations: Summarizes key metrics at the customer level
----------------------------------------------------------------------------*/
+*/
 SELECT 
 	customer_key,
 	customer_number,
