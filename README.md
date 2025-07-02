@@ -54,14 +54,14 @@ This project focuses on analyzing data from a retail company that sells bikes an
 - Number of unique customers
 - Recency, average order revenue, and monthly revenue
 
-## 🛠 Tools Used
+## Tools Used
 
 - **SQL** (MySQL)
 - Basic and advanced queries including:
   - `JOIN`, `GROUP BY`, `ORDER BY`
   - Window functions like `RANK()`, `ROW_NUMBER()`, `SUM() OVER`
 
-## 📁 How to Use
+## How to Use
 
 Each SQL file in the repository contains a specific analysis or report. Open the file to view the query and the purpose of the analysis. All queries are commented for clarity.
 
