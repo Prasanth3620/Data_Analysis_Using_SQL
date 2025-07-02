@@ -1,7 +1,5 @@
 /*
-===============================================================================
 Performance Analysis (Year-over-Year, Month-over-Month)
-===============================================================================
 Purpose:
     - To measure the performance of products, customers, or regions over time.
     - For benchmarking and identifying high-performing entities.
@@ -11,7 +9,6 @@ SQL Functions Used:
     - LAG(): Accesses data from previous rows.
     - AVG() OVER(): Computes average values within partitions.
     - CASE: Defines conditional logic for trend analysis.
-===============================================================================
 */
 
 /* Analyze the yearly performance of products by comparing their sales 
@@ -21,8 +18,8 @@ WITH yearly_product_sales AS (
         YEAR(f.order_date) AS order_year,
         p.product_name,
         SUM(f.sales_amount) AS current_sales
-    FROM gold.fact_sales f
-    LEFT JOIN gold.dim_products p
+    FROM sales f
+    LEFT JOIN products p
         ON f.product_key = p.product_key
     WHERE f.order_date IS NOT NULL
     GROUP BY 
