@@ -1,7 +1,5 @@
 /*
-===============================================================================
 Part-to-Whole Analysis
-===============================================================================
 Purpose:
     - To compare performance or metrics across dimensions or time periods.
     - To evaluate differences between categories.
@@ -10,15 +8,14 @@ Purpose:
 SQL Functions Used:
     - SUM(), AVG(): Aggregates values for comparison.
     - Window Functions: SUM() OVER() for total calculations.
-===============================================================================
 */
 -- Which categories contribute the most to overall sales?
 WITH category_sales AS (
     SELECT
         p.category,
         SUM(f.sales_amount) AS total_sales
-    FROM gold.fact_sales f
-    LEFT JOIN gold.dim_products p
+    FROM sales f
+    LEFT JOIN products p
         ON p.product_key = f.product_key
     GROUP BY p.category
 )
