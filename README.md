@@ -42,13 +42,13 @@ This project focuses on analyzing data from a retail company that sells bikes an
 
 ## Summary Reports
 
-### Customer Report
+### 11.Customer Report
 - Customer segmentation (VIP, Regular, New)
 - Total orders, sales, and quantity purchased
 - Lifespan and recency
 - Average order value and monthly spend
 
-### Product Report
+### 12.Product Report
 - Product segmentation (High, Mid, Low Performers)
 - Total sales, quantity sold, and order count
 - Number of unique customers
