@@ -60,6 +60,7 @@ This project focuses on analyzing data from a retail company that sells bikes an
 - Basic and advanced queries including:
   - `JOIN`, `GROUP BY`, `ORDER BY`
   - Window functions like `RANK()`, `ROW_NUMBER()`, `SUM() OVER`
+  - CTE is also used
 
 ## How to Use
 
