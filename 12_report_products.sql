@@ -1,7 +1,5 @@
 /*
-===============================================================================
 Product Report
-===============================================================================
 Purpose:
     - This report consolidates key product metrics and behaviors.
 
@@ -18,11 +16,10 @@ Highlights:
        - recency (months since last sale)
        - average order revenue (AOR)
        - average monthly revenue
-===============================================================================
 */
--- =============================================================================
+
+
 -- Create Report: gold.report_products
--- =============================================================================
 IF OBJECT_ID('gold.report_products', 'V') IS NOT NULL
     DROP VIEW gold.report_products;
 GO
@@ -30,9 +27,9 @@ GO
 CREATE VIEW gold.report_products AS
 
 WITH base_query AS (
-/*---------------------------------------------------------------------------
+/*
 1) Base Query: Retrieves core columns from fact_sales and dim_products
----------------------------------------------------------------------------*/
+*/
     SELECT
 	    f.order_number,
         f.order_date,
@@ -44,16 +41,16 @@ WITH base_query AS (
         p.category,
         p.subcategory,
         p.cost
-    FROM gold.fact_sales f
-    LEFT JOIN gold.dim_products p
+    FROM sales f
+    LEFT JOIN products p
         ON f.product_key = p.product_key
     WHERE order_date IS NOT NULL  -- only consider valid sales dates
 ),
 
 product_aggregations AS (
-/*---------------------------------------------------------------------------
+/*
 2) Product Aggregations: Summarizes key metrics at the product level
----------------------------------------------------------------------------*/
+*/
 SELECT
     product_key,
     product_name,
@@ -77,9 +74,9 @@ GROUP BY
     cost
 )
 
-/*---------------------------------------------------------------------------
+/*
   3) Final Query: Combines all product results into one output
----------------------------------------------------------------------------*/
+*/
 SELECT 
 	product_key,
 	product_name,
